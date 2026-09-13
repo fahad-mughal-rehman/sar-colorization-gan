@@ -66,7 +66,7 @@ jupyter notebook notebooks/sar_colorization_attention_gan.ipynb
 
 ### Adding your results
 
-The notebook's evaluation section saves comparison grids like `test_results/comparison_000.png`, each one a single image stacked as **row 1 = SAR input, row 2 = generated, row 3 = ground truth**, with one column per sample in the batch.
+The notebook's evaluation section saves comparison grids like `assets/results/output.png`, each one a single image stacked as **row 1 = SAR input, row 2 = generated, row 3 = ground truth**, with one column per sample in the batch.
 
 To turn those into clean, labeled images for this README or a portfolio/LinkedIn post:
 
