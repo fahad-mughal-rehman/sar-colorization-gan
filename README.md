@@ -1,4 +1,28 @@
+# SAR Image Colorization — Attention GAN
 
+Translating grayscale Synthetic Aperture Radar (SAR) imagery into realistic optical (RGB) imagery using a conditional GAN with attention.
+
+![results](assets/results/output.png)
+
+## Overview
+
+SAR sensors image the ground regardless of cloud cover or daylight, but the resulting grayscale imagery is hard to interpret visually. This project trains a conditional GAN to translate SAR imagery into optical-style RGB imagery, so the output is easier to read while keeping the availability advantages of radar.
+
+**Architecture**
+- **Generator:** U-Net with a self-attention block at the 16×16 bottleneck (SAGAN-style) and attention gates on every skip connection (Attention U-Net style, Oktay et al.)
+- **Discriminator:** Multi-scale PatchGAN — three discriminators at full, half, and quarter resolution (Pix2PixHD style)
+- **Losses:** LSGAN adversarial + feature matching + L1 + VGG19 perceptual + differentiable SSIM
+
+**Training details**
+- 256×256 paired SAR/optical images, deterministic train/val split (fixed seed) for reproducible evaluation
+- Mixed-precision (AMP) training with automatic checkpoint resume, built for Kaggle's session time limits
+- Evaluated with PSNR and SSIM on a held-out test split
+
+## Dataset
+
+[Paired SAR-Optical Dataset (16K Images)](https://www.kaggle.com/datasets/anjaliikakde/paired-sar-optical-dataset-16k-images) on Kaggle. Each image is a single PNG with the SAR tile on the left half and the paired optical tile on the right half.
+
+## Repository structure
 ## Getting started
 
 1. Open `notebooks/sar_colorization_attention_gan.ipynb` on a GPU environment (developed for Kaggle P100/T4; a local CUDA GPU works too).
