@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Training outputs (large / regenerate-able — do not commit)
+checkpoints/
+samples/
+test_results/
+*.pt
+*.pth
+
+# OS
+.DS_Store
+Thumbs.db
